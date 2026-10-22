@@ -6,9 +6,13 @@ recorded in the image tag and OCI revision label. It is not the upstream latest 
 
 The combined deployment lives in
 [mozia-newapi/deploy/mozia](https://github.com/MoziaVerse/mozia-newapi/tree/mozia/deploy/mozia).
-Sub2API runs in simple mode as the private account-pool upstream. New API owns
-customer-facing authentication and charging. PostgreSQL 18, Redis and application
-data have persistent volumes. All credentials remain outside Git.
+Sub2API runs in standard mode as the private account-pool upstream. The ordinary
+user `mozia-newapi` owns the integration keys for `openai-default` and
+`anthropic-default`; it starts with USD 1,000 of internal accounting credit and
+an aggregate concurrency limit of 10. Monitor its balance and assign upstream
+accounts to the matching groups. Public registration stays disabled. New API
+owns customer-facing authentication and charging. PostgreSQL 18, Redis and
+application data have persistent volumes. All credentials remain outside Git.
 
 On the server, this checkout is `/opt/mozia/mozia-sub2api` with origin pointing to
 MoziaVerse/mozia-sub2api and upstream pointing to Wei-Shaw/sub2api. Sync upstream
