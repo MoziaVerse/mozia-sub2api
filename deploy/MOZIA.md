@@ -7,7 +7,7 @@ recorded in the image tag and OCI revision label. It is not the upstream latest 
 The combined deployment lives in
 [mozia-newapi/deploy/mozia](https://github.com/MoziaVerse/mozia-newapi/tree/mozia/deploy/mozia).
 Sub2API runs in standard mode as the private account-pool upstream. The ordinary
-user `mozia-newapi` owns the integration keys for `openai-default` and
+user `Mozia-TokenPower` owns the integration keys for `openai-default` and
 `anthropic-default`; it starts with USD 1,000 of internal accounting credit and
 an aggregate concurrency limit of 10. Monitor its balance and assign upstream
 accounts to the matching groups. Public registration stays disabled. New API
