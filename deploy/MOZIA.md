@@ -5,7 +5,7 @@ The ARM64 application image is built from this branch's source, with its commit
 recorded in the image tag and OCI revision label. It is not the upstream latest image.
 
 The combined deployment lives in
-[mozia-newapi/deploy/mozia](https://github.com/MoziaVerse/mozia-newapi/tree/mozia/deploy/mozia).
+[mozia-tokenpower/deploy/mozia](https://github.com/MoziaVerse/mozia-tokenpower/tree/mozia/deploy/mozia).
 Sub2API runs in standard mode as the private account-pool upstream. The ordinary
 user `Mozia-TokenPower` owns the integration keys for `openai-default` and
 `anthropic-default`; it starts with USD 1,000 of internal accounting credit and
@@ -18,3 +18,17 @@ On the server, this checkout is `/opt/mozia/mozia-sub2api` with origin pointing 
 MoziaVerse/mozia-sub2api and upstream pointing to Wei-Shaw/sub2api. Sync upstream
 into `main` first, merge `main` into `mozia`, review, rebuild and deploy the new
 commit. Preserve backups and the previous image before upgrading.
+
+## Automatic deployment
+
+`.github/workflows/mozia-deploy.yml` builds the exact `mozia` commit on a hosted
+ARM64 runner, publishes `ghcr.io/moziaverse/mozia-sub2api`, and deploys its immutable
+digest to the Singapore server. Pushes to `main` and pull requests do not deploy.
+The `production` environment permits only `mozia` and contains a dedicated,
+forced-command SSH key; it cannot deploy TokenPower or open an interactive shell.
+
+The shared receiver, deployment lock, database backup, health checks, previous-image
+recovery, image pinning and operator instructions are maintained in the combined
+deployment above. This workflow updates only the Sub2API application container.
+Re-run a failed Actions run after addressing its cause; stale commits are skipped.
+Database backups are retained, but are never automatically restored over live data.
