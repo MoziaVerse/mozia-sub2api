@@ -1,3 +1,5 @@
+/AGENTS.LOCAL.md
+
 # 本地杂项文档、测试数据和外部项目副本
 /docs-local/
 .codex
@@ -120,6 +122,7 @@ tests
 !deploy/tests/
 !deploy/tests/**
 CLAUDE.md
+!/CLAUDE.md
 .claude
 scripts
 !backend/scripts/
@@ -128,6 +131,7 @@ scripts
 #openspec/
 code-reviews/
 AGENTS.md
+!/AGENTS.md
 backend/cmd/server/server
 deploy/docker-compose.override.yml
 .gocache/
